@@ -1,0 +1,27 @@
+$(document).ready(function() {
+    
+    $('.filter-button').click(function() {
+        let category = $(this).data('category');
+        if (category === 'all') {
+            $('.gallery img').fadeIn();
+        } else {
+            $('.gallery img').fadeOut();
+            $(`.gallery img[data-category="${category}"]`).fadeIn();
+        }
+    });
+
+    
+    $('.gallery').on('click', 'img', function() {
+        let src = $(this).attr('src');
+        $('.lightbox-image').attr('src', src);
+        $('#lightbox').removeClass('hidden');
+    });
+
+    $('#lightbox').click(function() {
+        $(this).addClass('hidden');
+    });
+
+    $('.close-button').click(function() {
+        $('#lightbox').addClass('hidden');
+    });
+});
